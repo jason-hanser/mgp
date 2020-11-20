@@ -4,7 +4,7 @@
 #' (A Dirichelt Multinomial Mixture Model-based Approach for Short Text Clustering).
 #'
 #' @param data A data frame.
-#' @param text The name of a column within the data frame containing text to cluster; the column name should
+#' @param text The name of a column within the data frame containing text to cluster. The column name should
 #' not be listed in quotes.
 #' @param K The upper limit for the number of topics. The function will automatically condense and remove
 #' empty clusters.
@@ -25,12 +25,8 @@
 #' @examples
 #'
 #' library(dplyr)
+#' library(tidytext)
 #'
-#' d <-
-#'
-#' d %>%
-#'    mgp(text  = text,
-#'        K     = 10)
 #'
 
 mgp <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30, repeat_words = FALSE, r_stopwords = TRUE) {

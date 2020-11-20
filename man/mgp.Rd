@@ -50,6 +50,7 @@ This function implements the Movie Group Process outlined by Ying and Wang in th
 \examples{
 
 library(dplyr)
+library(tidytext)
 
 d <-
 
