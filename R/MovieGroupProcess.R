@@ -15,7 +15,7 @@
 #' @param iter The upper limit for the number of iterations to perform. The function will terminate
 #' earlier if a stable solution is found. Default is set at 30.
 #' @param repeat_words A logical vector indicated whether the documents contain repeated words. If TRUE, the
-#' fucntion uses a Algorithm 4 from Yin and Wang's paper; if FALSE, the function using Algorithm 3 from their
+#' function uses a Algorithm 4 from Yin and Wang's paper; if FALSE, the function using Algorithm 3 from their
 #' paper. Default is set to FALSE.
 #' @param r_stopwords A logical vector indicating whether stop words should be removed. Default is set at TRUE.
 #'
@@ -24,20 +24,15 @@
 #'
 #' @examples
 #'
-#' library(dplyr)
-#' library(tidytext)
 #'
 #'
 
 MovieGroupProcess <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30, repeat_words = FALSE, r_stopwords = TRUE) {
 
-  ## Checking parameters
-
   ## Tokenizing data and removing stop words
 
    text <- data[[rlang::quo_name(rlang::enquo(text))]]
    text <- strsplit(x = tolower(text), split = "\\W")
-
 
   ## Removing stop words
 
