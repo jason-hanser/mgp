@@ -34,7 +34,7 @@ cluster. Default values is set to 0.1.}
 earlier if a stable solution is found. Default is set at 30.}
 
 \item{repeat_words}{A logical vector indicated whether the documents contain repeated words. If TRUE, the
-fucntion uses a Algorithm 4 from Yin and Wang's paper; if FALSE, the function using Algorithm 3 from their
+function uses a Algorithm 4 from Yin and Wang's paper; if FALSE, the function using Algorithm 3 from their
 paper. Default is set to FALSE.}
 
 \item{r_stopwords}{A logical vector indicating whether stop words should be removed. Default is set at TRUE.}
