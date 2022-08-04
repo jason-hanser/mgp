@@ -29,10 +29,12 @@
 
 MovieGroupProcess <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30, repeat_words = FALSE, r_stopwords = TRUE) {
 
-  ## Tokenizing data and removing stop words
+  ## Tokenizing data and removing null (i.e. "") values
 
    text <- data[[rlang::quo_name(rlang::enquo(text))]]
    text <- strsplit(x = tolower(text), split = "\\W")
+   text <- rapply(text, function(x) x[x != ""], how = "replace")
+
 
   ## Removing stop words
 
@@ -41,6 +43,7 @@ MovieGroupProcess <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30
     text <- lapply(text, setdiff, tidytext::stop_words$word)
 
   }
+
 
   ## creating documents object
 
@@ -94,7 +97,7 @@ MovieGroupProcess <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30
         topics$documents[j] <- list(documents$document[documents$topic == j])
         topics$tokens[j]    <- list(unlist(documents$tokens[documents$topic == j]))
 
-      }
+        } ## end of j loop
 
       p <- list()
 
@@ -136,7 +139,7 @@ MovieGroupProcess <- function(data, text, K, alpha  = 0.1, beta = 0.1, iter = 30
 
       ## Assigning document to new cluster/topic and reforming clusters/topics
 
-      documents$topic[[d]] <- which(p$prob == max(p$prob))[[1]]
+      documents$topic[[d]] <- which(unlist(p$prob) == max(unlist(p$prob)))
 
       topics <- list()
 
